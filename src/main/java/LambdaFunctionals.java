@@ -30,13 +30,17 @@ public class LambdaFunctionals {
         System.out.println(newList);
         System.out.println(filteredList);
 
+        List<Integer> intList = List.of(1,4,5,6,7,8);
+        Predicate<Integer> integerFilter = e -> e % 2 == 0;
+        List<Integer> newListInteger = filterList(intList, integerFilter);
+        System.out.println(newListInteger);
     }
 
-    private static List<String> filterList(List<String> list, Predicate<String> predicate) {
-        List<String> newList = new ArrayList<>();
-        for (String string: list) {
-            if (predicate.test(string)) {
-                newList.add(string);
+    private static <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
+        List<T> newList = new ArrayList<>();
+        for (T row: list) {
+            if (predicate.test(row)) {
+                newList.add(row);
             }
         }
         return newList;
