@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class LambdaFunctionals {
     public static void main(String[] args) {
@@ -42,6 +43,13 @@ public class LambdaFunctionals {
         consumerInt.accept(55);
 
         printElements(listNum, consumerInt);
+
+        // Supplier
+        Supplier<String> stringSupplier = () -> new String("A String");
+        System.out.println(stringSupplier.get());
+
+        Supplier<Double> mathNumber = () -> Math.random();
+        System.out.println(mathNumber.get());
     }
 
     private static <T> void printElements(List<T> list, Consumer<T> consumerInt) {
