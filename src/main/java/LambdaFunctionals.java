@@ -2,6 +2,7 @@ import Interface.FunctionalGenerics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class LambdaFunctionals {
@@ -34,6 +35,19 @@ public class LambdaFunctionals {
         Predicate<Integer> integerFilter = e -> e % 2 == 0;
         List<Integer> newListInteger = filterList(intList, integerFilter);
         System.out.println(newListInteger);
+
+        // Consumer
+        List<Integer> listNum = List.of(23,5,3,24,62,43,62,89);
+        Consumer<Integer> consumerInt = System.out::println;
+        consumerInt.accept(55);
+
+        printElements(listNum, consumerInt);
+    }
+
+    private static <T> void printElements(List<T> list, Consumer<T> consumerInt) {
+        for (T t: list) {
+            consumerInt.accept(t);
+        }
     }
 
     private static <T> List<T> filterList(List<T> list, Predicate<T> predicate) {
