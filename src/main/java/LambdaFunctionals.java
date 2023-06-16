@@ -3,6 +3,7 @@ import Interface.FunctionalGenerics;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -50,6 +51,20 @@ public class LambdaFunctionals {
 
         Supplier<Double> mathNumber = () -> Math.random();
         System.out.println(mathNumber.get());
+
+        // function
+        List<String> listFunction = List.of("Kit", "Kot", "Shake");
+        Function<String, Integer> function = String::length;
+        List<Integer> newListFunction = map(listFunction, function);
+        System.out.println(newListFunction);
+    }
+
+    private static <T, R> List<R> map(List<T> list, Function<T, R> function) {
+        List<R> newList = new ArrayList<>();
+        for(T e: list) {
+            newList.add(function.apply(e));
+        }
+        return newList;
     }
 
     private static <T> void printElements(List<T> list, Consumer<T> consumerInt) {
