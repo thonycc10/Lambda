@@ -65,6 +65,10 @@ public class LambdaFunctionals {
         BiFunction<String, String, String> bf1 = (t, u) -> String.format(" Este es T ->  %1s, y este es U -> %2s", t, u);
         System.out.println(bf1.apply("Hola", "Mundo"));
 
+        //BinaryOperation
+        BinaryOperator<String> bo1 = (t1, t2) -> t1 + "." + t2;
+        System.out.println(bo1.apply("Thony", "com"));
+
     }
 
     private static <T> List<T> mapper(List<T> listUO, UnaryOperator<T> operator) {
