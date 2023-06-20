@@ -17,6 +17,5 @@ public class ConstructurReference {
         threadFunction
                 .apply(() -> System.out.println("Task3"))
                 .start();
-
     }
 }
